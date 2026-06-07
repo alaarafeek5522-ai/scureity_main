@@ -1,4 +1,4 @@
-name: krinry Build
+name: Build APK
 on:
   workflow_dispatch:
 
@@ -12,11 +12,13 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'none'
 
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.41.0'
           channel: 'stable'
+          cache: false
 
       - run: flutter pub get
       - run: flutter create --platforms android .
